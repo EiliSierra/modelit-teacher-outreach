@@ -1,0 +1,38 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files with sensitive information
+# Uncomment if you don't want to track contact data
+# data/*.csv
+# data/*.xlsx
+
+# Logs
+*.log
+logs/
+
+# Temp files
+temp/
+tmp/
+*.tmp
