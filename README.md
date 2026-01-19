@@ -1,45 +1,48 @@
-# ModelIt! Teacher Outreach Automation
+# ModelIt! Teacher Outreach - HubSpot Automation
 
-Automated tools for K-12 teacher engagement, contact management, and educational marketing campaigns.
+Automated tools for K-12 teacher contact management and HubSpot CRM integration.
 
 ## Overview
 
-This repository contains automation tools for reaching K-12 teachers, health educators, and science facilitators to promote **ModelIt!** - an educational simulation platform by Discovery Collective that adapts research-grade modeling technology into engaging science lessons.
-
-## Features
-
-- **HubSpot Integration**: Automated contact upload and CRM management
-- **Web Scraping**: Extract teacher contact information from school district websites
-- **Email Automation**: Sequences for webinars, onboarding, and nurturing campaigns
-- **Multi-platform Outreach**: Tools for reaching teachers across multiple channels
+Scripts for extracting teacher contact information from school districts and uploading to HubSpot CRM for educational outreach campaigns.
 
 ## Repository Structure
 
 ```
 modelit-teacher-outreach/
 ├── scripts/
-│   ├── hubspot/           # HubSpot API integration scripts
+│   ├── hubspot/              # HubSpot API integration
 │   │   ├── upload_carlsbad_to_hubspot.py
 │   │   ├── hubspot_ucla_contacts.py
 │   │   └── upload_to_hubspot.py
-│   └── scrapers/          # Web scraping tools
+│   └── scrapers/             # Web scraping tools
 │       └── carlsbad_staff_scraper.py
-├── docs/                  # Documentation and plans
-│   ├── 01-MASTER-AUTOMATION-PLAN.md
-│   ├── 02-IMPLEMENTATION-TIMELINE.md
-│   └── 03-COST-ANALYSIS.md
-├── data/                  # Extracted contact data (CSV/Excel)
-├── workflows/             # n8n automation workflows
+├── data/                     # Extracted contact data
+│   ├── carlsbad_staff_directory.csv
+│   └── carlsbad_staff_directory.xlsx
+├── requirements.txt
 └── README.md
 ```
+
+## Scripts
+
+### HubSpot Integration
+
+| Script | Description |
+|--------|-------------|
+| `upload_carlsbad_to_hubspot.py` | Upload Carlsbad USD contacts (342 teachers) to HubSpot |
+| `hubspot_ucla_contacts.py` | Upload UCLA Education Department contacts |
+| `upload_to_hubspot.py` | Upload Rhoades School faculty contacts |
+
+### Web Scrapers
+
+| Script | Description |
+|--------|-------------|
+| `carlsbad_staff_scraper.py` | Extract staff info from 16 Carlsbad USD schools |
 
 ## Quick Start
 
 ### Prerequisites
-
-- Python 3.11+
-- HubSpot API Key
-- Required Python packages:
 
 ```bash
 pip install requests python-dotenv pandas openpyxl beautifulsoup4 lxml
@@ -47,7 +50,7 @@ pip install requests python-dotenv pandas openpyxl beautifulsoup4 lxml
 
 ### Environment Setup
 
-Create a `.env` file in your working directory:
+Create `.env` file:
 
 ```env
 HUBSPOT_API_KEY=your_hubspot_api_key_here
@@ -55,67 +58,25 @@ HUBSPOT_API_KEY=your_hubspot_api_key_here
 
 ### Usage
 
-#### 1. Scrape Teacher Contacts (Carlsbad USD)
-
+**1. Scrape teacher contacts:**
 ```bash
 python scripts/scrapers/carlsbad_staff_scraper.py
 ```
 
-This extracts contact information from 16 schools in Carlsbad Unified School District.
-
-#### 2. Upload to HubSpot
-
+**2. Upload to HubSpot:**
 ```bash
 python scripts/hubspot/upload_carlsbad_to_hubspot.py
 ```
 
-Uploads scraped contacts to HubSpot CRM with proper tagging.
+## Data Collected
 
-## Target Audiences
-
-| Audience | Description | Strategy |
-|----------|-------------|----------|
-| K-12 Science Teachers | Primary target | Webinars, TPT, conferences |
-| Health Educators | Secondary | Disease modeling focus |
-| Homeschool Parents | Growing segment | Community building |
-| Museum/Informal Ed | Partnerships | Special programs |
-
-## Automation Stack
-
-- **CRM**: HubSpot (contact management)
-- **Email**: SendGrid (transactional & marketing)
-- **Workflows**: n8n (self-hosted automation)
-- **Social**: Ayrshare API (multi-platform posting)
-- **Analytics**: Google Analytics 4 + custom dashboards
-
-## Key Metrics
-
-- **Webinar attendance rate target**: 60%+
-- **Email open rate target**: 25%+
-- **Pilot signup conversion**: 10-15%
-- **Teacher database goal**: 5,000 by Q4 2025
-
-## Documentation
-
-- [Master Automation Plan](docs/01-MASTER-AUTOMATION-PLAN.md) - Complete technical strategy
-- [Implementation Timeline](docs/02-IMPLEMENTATION-TIMELINE.md) - Phased rollout
-- [Cost Analysis](docs/03-COST-ANALYSIS.md) - Budget and ROI projections
-
-## Security Notes
-
-- Never commit `.env` files with API keys
-- Contact data (CSV/Excel) should be handled according to privacy policies
-- Use environment variables for all sensitive credentials
-
-## License
-
-MIT License - For educational purposes.
+- **Carlsbad USD**: 342 staff contacts from 16 schools
+- **UCLA Education**: 4 department chairs
+- **Rhoades School**: 20 faculty members
 
 ## Contact
 
-- **Project Lead**: Eili Sierra
-- **Organization**: Discovery Collective / Alexandria's Design
-- **Related**: [ModelIt! Educational Simulations](https://modelit.com)
+**Owner**: Eili Sierra
 
 ---
 
