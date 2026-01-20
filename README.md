@@ -19,9 +19,8 @@ modelit-teacher-outreach/
 │       └── carlsbad_staff_scraper.py
 ├── docs/
 │   └── campaign-plan.md      # Complete campaign strategy
-├── data/                     # Extracted contact data
-│   ├── carlsbad_staff_directory.csv
-│   └── carlsbad_staff_directory.xlsx
+├── data/
+│   └── example_contacts.csv  # Example format (no real data)
 ├── requirements.txt
 └── README.md
 ```
@@ -126,6 +125,18 @@ python scripts/hubspot/upload_carlsbad_to_hubspot.py
 ## Documentation
 
 - [Complete Campaign Plan](docs/campaign-plan.md)
+
+## Data & Privacy
+
+**Real contact data is NOT stored in this repository.**
+
+| Data Type | Location |
+|-----------|----------|
+| Example/template | `data/example_contacts.csv` (in repo) |
+| Real contacts | `D:/ClaudeEili/DatosSensibles/teacher-contacts/` (local only) |
+| API keys | `.env` file (local only, never commit) |
+
+The scraper generates real data locally. Never commit files containing real emails or personal information.
 
 ## Contact
 

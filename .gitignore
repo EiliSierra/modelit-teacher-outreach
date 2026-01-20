@@ -23,10 +23,11 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Data files with sensitive information
-# Uncomment if you don't want to track contact data
-# data/*.csv
-# data/*.xlsx
+# Data files with sensitive information (emails, phone numbers)
+# NEVER upload real contact data to GitHub
+data/*.csv
+data/*.xlsx
+!data/example_contacts.csv
 
 # Logs
 *.log
