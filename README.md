@@ -4,61 +4,101 @@ Automated tools for K-12 teacher contact management, email campaigns, and HubSpo
 
 ## Overview
 
-Complete campaign system for reaching K-12 teachers to promote ModelIt educational simulations through webinars and TPT sales.
+Complete campaign system for reaching K-12 teachers to promote ModelIt educational simulations. The campaign uses a **"value-first"** approach: offering a free lesson before asking for commitment to webinars or purchases.
+
+**Target Audience:** 342 teachers from Carlsbad USD
+**Free Lesson:** "From Plug to Steam: How Energy Boils Water"
+**Goal:** Build trust → Collect feedback → Segment leads → Convert to TPT sales
 
 ## Repository Structure
 
 ```
 modelit-teacher-outreach/
 ├── scripts/
-│   ├── hubspot/              # HubSpot API integration
+│   ├── hubspot/                    # HubSpot API integration
 │   │   ├── upload_carlsbad_to_hubspot.py
 │   │   ├── hubspot_ucla_contacts.py
 │   │   └── upload_to_hubspot.py
-│   └── scrapers/             # Web scraping tools
+│   └── scrapers/                   # Web scraping tools
 │       └── carlsbad_staff_scraper.py
 ├── docs/
-│   └── campaign-plan.md      # Complete campaign strategy
+│   ├── campaign-plan.md            # Complete campaign strategy (v2)
+│   ├── email_templates_v2.md       # 8 email templates
+│   ├── survey_questions.md         # Feedback survey design
+│   ├── lead_scoring.md             # Lead qualification system
+│   └── implementation_checklist.md # Step-by-step launch guide
 ├── data/
-│   └── example_contacts.csv  # Example format (no real data)
+│   └── example_contacts.csv        # Example format (no real data)
 ├── requirements.txt
 └── README.md
 ```
 
-## Campaign Strategy
+## Campaign Strategy v2
 
 ### Conversion Funnel
+
 ```
-Email inicial → Registro Webinar → Asistencia → Visita TPT → Compra
+[Free Lesson] → [Feedback Survey] → [Segmentation] → [Webinar/TPT]
 ```
 
-### Lead Scoring System (Cold/Warm/Hot)
+**Why this works better than direct webinar invites:**
+1. **Give value first** — Free lesson builds trust
+2. **Qualify leads** — Survey identifies interested teachers
+3. **Smart segmentation** — Hot leads → webinar, Cold → TPT direct
+4. **Reduce friction** — Only invest time in best prospects
 
-| Score | Status | Action |
-|-------|--------|--------|
-| 0-10 | **Cold** | Keep in nurture sequence |
-| 11-30 | **Warm** | Personalized follow-up email |
-| 31-60 | **Hot** | Priority for follow-up |
-| 61+ | **Very Hot** | Personal contact / call |
+### Email Sequence (8 emails)
 
-### Email Sequences
+| # | Email | Day | Audience |
+|---|-------|-----|----------|
+| 1 | Free Lesson Offer | 1 | All contacts |
+| 2 | Reminder | 3 | Non-downloaders |
+| 3 | Feedback Survey | 10 | Downloaders |
+| 4 | Webinar Invite | 12 | Hot leads (4-5 stars) |
+| 5 | More Resources | 12 | Cold leads / No response |
+| 6 | Webinar Replay | 14 | Webinar registrants |
+| 7 | Discount Reminder | 17 | Webinar attendees |
+| 8 | Final Follow-up | 21 | All engaged contacts |
 
-**Pre-Webinar (5 emails):**
-1. Introduction + demo video
-2. Reminder (non-openers)
-3. Lead magnet (free PDF guide)
-4. Urgency (3 days before)
-5. Webinar day (Zoom link)
+### Lead Scoring System
 
-**Post-Webinar (3 emails):**
-6. Thank you + replay + resources
-7. Special offer (attendees only)
-8. Final follow-up + FAQ
+| Score | Segment | Action |
+|-------|---------|--------|
+| 0-15 | **Cold** | Monthly nurture only |
+| 16-40 | **Warm** | Value content + soft TPT |
+| 41-70 | **Hot** | Webinar invite + promotions |
+| 71+ | **Very Hot** | Personal outreach recommended |
 
-### Visual Materials (Hooks)
-- Demo video (2-3 min)
-- PDF Lead Magnet: "Systems Thinking Guide for Your Class"
-- Webinar replay + slides
+### Key Actions & Points
+
+| Action | Points |
+|--------|--------|
+| Downloaded free lesson | +20 |
+| Completed survey | +15 |
+| Rating 4-5 stars | +20 to +25 |
+| Registered for webinar | +25 |
+| Attended webinar | +30 |
+| Clicked TPT link | +15 |
+| Purchased | +100 |
+
+## Free Lesson Package
+
+**"From Plug to Steam: How Energy Boils Water"**
+
+| Attribute | Value |
+|-----------|-------|
+| Grade | 8th (adaptable 6-9) |
+| Topic | Energy transfer (PS3.A, PS3.B) |
+| Duration | ~45 minutes |
+| TPT Value | $7.99 → **FREE as sample** |
+
+**Contents:**
+- Teacher Guide (PDF)
+- Student Activity Pack (printable + digital)
+- PowerPoint slides
+- Quick Start Guide
+- Video walkthrough
+- Direct link to ModelIt simulation
 
 ## Scripts
 
@@ -67,8 +107,8 @@ Email inicial → Registro Webinar → Asistencia → Visita TPT → Compra
 | Script | Description |
 |--------|-------------|
 | `upload_carlsbad_to_hubspot.py` | Upload Carlsbad USD contacts (342 teachers) |
-| `hubspot_ucla_contacts.py` | Upload UCLA Education Department contacts |
-| `upload_to_hubspot.py` | Upload Rhoades School faculty contacts |
+| `hubspot_ucla_contacts.py` | Upload UCLA Education contacts |
+| `upload_to_hubspot.py` | Upload Rhoades School faculty |
 
 ### Web Scrapers
 
@@ -81,7 +121,7 @@ Email inicial → Registro Webinar → Asistencia → Visita TPT → Compra
 ### Prerequisites
 
 ```bash
-pip install requests python-dotenv pandas openpyxl beautifulsoup4 lxml
+pip install -r requirements.txt
 ```
 
 ### Environment Setup
@@ -106,25 +146,33 @@ python scripts/hubspot/upload_carlsbad_to_hubspot.py
 
 ## Tools
 
-- **HubSpot**: CRM and contact lists
-- **SendGrid**: Email sending
-- **n8n**: Workflow automation
+- **HubSpot**: CRM, email marketing, workflows
+- **Google Forms**: Feedback survey
+- **Zapier**: Forms → HubSpot integration
 - **Zoom**: Webinars
+- **TPT**: Teachers Pay Teachers store
 
 ## Target Metrics
 
 | Metric | Goal |
 |--------|------|
-| Email open rate | >25% |
-| Click rate | >5% |
-| Webinar registration | >10% |
-| Webinar attendance | >40% |
-| TPT visits | >20% |
+| Lesson download rate | >30% |
+| Survey response rate | >40% |
+| Average rating | >4.0 stars |
+| Webinar registration (hot leads) | >20% |
+| Webinar attendance | >50% |
+| TPT visits | >25% |
 | Purchase conversion | >5% |
 
 ## Documentation
 
-- [Complete Campaign Plan](docs/campaign-plan.md)
+| Document | Description |
+|----------|-------------|
+| [Campaign Plan](docs/campaign-plan.md) | Complete strategy & funnel |
+| [Email Templates](docs/email_templates_v2.md) | All 8 email contents |
+| [Survey Questions](docs/survey_questions.md) | Feedback form design |
+| [Lead Scoring](docs/lead_scoring.md) | Qualification system |
+| [Implementation Checklist](docs/implementation_checklist.md) | Launch guide |
 
 ## Data & Privacy
 
@@ -133,15 +181,16 @@ python scripts/hubspot/upload_carlsbad_to_hubspot.py
 | Data Type | Location |
 |-----------|----------|
 | Example/template | `data/example_contacts.csv` (in repo) |
-| Real contacts | `D:/ClaudeEili/DatosSensibles/teacher-contacts/` (local only) |
-| API keys | `.env` file (local only, never commit) |
+| Real contacts | Local only (never commit) |
+| API keys | `.env` file (local only) |
 
 The scraper generates real data locally. Never commit files containing real emails or personal information.
 
 ## Contact
 
 **Owner**: Eili Sierra
+**TPT Store**: https://www.teacherspayteachers.com/store/modelit
 
 ---
 
-*Built with Claude Code*
+*Built with Claude Code | January 2026*

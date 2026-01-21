@@ -1,312 +1,419 @@
-# Plan de Campaña: Outreach Teachers K12 - ModelIt
+# Plan de Campaña v2: Teacher Outreach ModelIt
 
 ## Repositorio GitHub
 
-**Nombre**: `modelit-k12-campaign`
-**Ubicación local**: `D:/ClaudeEili/GitHub-Repos/modelit-k12-campaign/`
+**Nombre**: `modelit-teacher-outreach`
+**URL**: https://github.com/EiliSierra/modelit-teacher-outreach
+**Ubicación local**: `D:/ClaudeEili/Proyectos/modelit-teacher-outreach/`
 **Visibilidad**: Privado
 
 ### Estructura del repositorio
+
 ```
-modelit-k12-campaign/
-├── README.md                    # Documentación del proyecto
-├── .env.example                 # Variables de entorno (sin secrets)
-├── .gitignore                   # Excluir .env, node_modules, etc.
+modelit-teacher-outreach/
+├── README.md
+├── .gitignore
+├── requirements.txt
 ├── docs/
-│   ├── campaign-plan.md         # Este plan
-│   ├── email-templates.md       # Contenido de los emails
-│   └── metrics-tracking.md      # KPIs y métricas
+│   ├── campaign-plan.md         # Este archivo
+│   ├── email_templates_v2.md    # 8 templates de email
+│   ├── survey_questions.md      # Preguntas de encuesta
+│   ├── lead_scoring.md          # Sistema de puntuación
+│   └── implementation_checklist.md
 ├── scripts/
-│   ├── hubspot_setup.py         # Configurar HubSpot (listas, propiedades)
-│   ├── email_campaign.py        # Enviar emails via SendGrid
-│   ├── campaign_tracker.py      # Obtener métricas
-│   └── sync_zoom_hubspot.py     # Sincronizar asistentes Zoom → HubSpot
-├── workflows/
-│   ├── email_sequence.json      # Workflow n8n: secuencia de emails
-│   ├── post_webinar.json        # Workflow n8n: post-webinar
-│   └── interest_tracking.json   # Workflow n8n: tracking de interés
-├── templates/
-│   ├── email_1_intro.html       # Template Email 1
-│   ├── email_2_reminder.html    # Template Email 2
-│   └── ...                      # Resto de templates
-└── assets/
-    ├── modelit_logo.png         # Logo para emails
-    └── video_thumbnail.png      # Thumbnail del video demo
+│   ├── hubspot/
+│   │   ├── upload_carlsbad_to_hubspot.py
+│   │   ├── hubspot_ucla_contacts.py
+│   │   └── upload_to_hubspot.py
+│   └── scrapers/
+│       └── carlsbad_staff_scraper.py
+└── data/
+    └── example_contacts.csv
 ```
 
 ---
 
 ## Resumen Ejecutivo
 
-**Objetivo**: Convertir 365 profesores K12 (Teachers K12 - Carlsbad USD) en clientes de ModelIt a través de webinars mensuales y ventas en TPT.
+**Objetivo**: Convertir 342 profesores de Carlsbad USD en compradores de ModelIt a través de una lección gratuita, feedback cualificado, y webinars.
 
-**Funnel de conversión**:
+**Cambio clave vs Plan Original**: Dar valor primero (lección gratuita) antes de pedir compromiso (webinar).
+
+### Comparación de Funnels
+
+**Plan Original (v1):**
 ```
-Email inicial → Registro Webinar → Asistencia → Explorar TPT → Compra
+Email → Webinar → TPT
 ```
 
-**Herramientas**: HubSpot + n8n + SendGrid + Zoom
+**Plan Mejorado (v2):**
+```
+Lección Gratuita → Encuesta Feedback → Segmentación → Webinar/TPT
+```
+
+### Por qué funciona mejor
+
+1. **Dar valor primero**: Lección completa gratis genera confianza
+2. **Calificar leads**: La encuesta identifica quiénes están interesados
+3. **Segmentar inteligentemente**: Hot leads → webinar, Cold → TPT directo
+4. **Reducir fricción**: Solo invertimos tiempo en los más interesados
+5. **Todo lleva a TPT**: Cada camino termina en la tienda
 
 ---
 
-## Fase 1: Configuración Base (Día 1-2)
+## Lección de Muestra
 
-### 1.1 Segmentación en HubSpot
-- Crear lista "Teachers K12 - Cold" (365 contactos)
-- Crear lista "Webinar Registrados"
-- Crear lista "Webinar Asistieron"
-- Crear lista "TPT Visitors"
-- Crear lista "Compradores"
+### "From Plug to Steam: How Energy Boils Water"
 
-### 1.2 Propiedades personalizadas en HubSpot
+| Atributo | Valor |
+|----------|-------|
+| **Grado objetivo** | 8th Grade (adaptable 6-9) |
+| **Tema** | Transferencia de energía |
+| **Estándares** | NGSS PS3.A, PS3.B |
+| **Plataforma** | ModelIt (Cell Collective) |
+| **Valor en TPT** | $7.99 → **GRATIS como muestra** |
+| **Duración** | ~45 minutos |
+
+### Contenido del paquete
+
+- Teacher Guide (PDF, 8 páginas)
+- Student Activity Pack (printable + digital)
+- PowerPoint slides (PPTM)
+- Quick Start Guide (PDF)
+- Teacher Walkthrough Video (MP4)
+- Link directo a simulación en ModelIt
+
+### Las 4 actividades
+
+1. **Build and Label Components** - Identificar partes del sistema
+2. **Connect Energy Flow** - Mostrar cómo fluye la energía
+3. **Simulate with Energy OFF** - Probar sin energía
+4. **Simulate with Energy ON** - Comparar resultados
+
+### Ubicación de archivos
+
 ```
-- campaign_status: cold | invited | registered | attended | visited_tpt | purchased
-- webinar_date: fecha del webinar al que se registró
-- interest_score: 0-100 (calculado automáticamente)
+D:\Alexandria´s Design\ModelIt\8th Grade\From Plug to Steam How Energy Boils Water\
+├── From Plug to Steam How Energy Boils Water.zip
+├── Teacher Guide. From Plug to Steam How Energy Boils Water.pdf
+├── Activity Pack. From Plug to Steam How Energy Boils Water.pdf
+├── From Plug to Steam – How Energy Boils Water.pptm
+├── READ FIRST — Quick Start for Teachers.pdf
+└── Teacher Lesson Walkthrough. From Plug to Steam (1).mp4
 ```
 
-### 1.3 Crear Video Corto (2-3 min)
-- Intro a ModelIt
-- Qué problema resuelve
-- Preview de una lección
-- CTA: "Únete al webinar gratuito"
+---
+
+## Funnel de Conversión Detallado
+
+```
+                    [Email 1: Lección Gratuita]
+                              │
+                    ┌─────────┴─────────┐
+                    │                   │
+              No descargó          Descargó ✓
+                    │                   │
+           [Email 2: Reminder]    (Esperar 7 días)
+                    │                   │
+                    └─────────┬─────────┘
+                              │
+                    [Email 3: Encuesta]
+                              │
+            ┌─────────────────┼─────────────────┐
+            │                 │                 │
+        4-5 ⭐              1-3 ⭐           Sin respuesta
+        Hot Lead          Cold Lead         Unknown
+            │                 │                 │
+   [Email 4: Webinar]  [Email 5: TPT]    [Email 5: TPT]
+            │                 │                 │
+         Webinar              │                 │
+            │                 │                 │
+   [Email 6: Replay]          │                 │
+            │                 │                 │
+   [Email 7: Descuento]       │                 │
+            │                 │                 │
+            └─────────────────┴─────────────────┘
+                              │
+                    [Email 8: Final Follow-up]
+                              │
+                            TPT 🛒
+```
 
 ---
 
-## Fase 2: Secuencia de Emails (5 emails)
+## Secuencia de Emails
 
-### Email 1: Introducción (Día 1)
-**Subject**: "Una nueva forma de enseñar ciencias que tus estudiantes van a amar"
-**Contenido**:
-- Problema: Enseñar pensamiento sistémico es difícil
-- Solución: ModelIt (video de 2 min embebido)
-- CTA: "Regístrate al webinar gratuito [FECHA]"
-- Link: Formulario de registro
+### Resumen de los 8 emails
 
-### Email 2: Recordatorio (Día 4)
-**Subject**: "¿Viste el video? Quedan X lugares para el webinar"
-**Contenido**:
-- Para los que NO abrieron Email 1
-- Resumen de beneficios
-- Testimonial corto
-- CTA: Registro webinar
+| # | Nombre | Día | Audiencia | Objetivo |
+|---|--------|-----|-----------|----------|
+| 1 | Free Lesson | 1 | Todos | Ofrecer lección gratuita |
+| 2 | Reminder | 3 | No descargaron | Segundo intento |
+| 3 | Survey | 10 | Descargaron | Recopilar feedback |
+| 4 | Webinar Invite | 12 | Hot leads (4-5⭐) | Invitar a webinar |
+| 5 | More Resources | 12 | Cold/No response | Dirigir a TPT |
+| 6 | Replay | 14 | Registrados webinar | Compartir replay + descuento |
+| 7 | Discount Reminder | 17 | Asistieron webinar | Urgencia descuento |
+| 8 | Final Follow-up | 21 | Todos engageados | Cierre + demo |
 
-### Email 3: Valor adicional (Día 7)
-**Subject**: "Recurso gratuito: Guía de Pensamiento Sistémico para tu clase"
-**Contenido**:
-- Lead magnet: PDF descargable
-- Preview de lo que verán en el webinar
-- CTA: Registro webinar
-
-### Email 4: Urgencia (Día 10)
-**Subject**: "El webinar es en 3 días - ¿Te registraste?"
-**Contenido**:
-- Solo para NO registrados
-- FOMO: "87 profesores ya se registraron"
-- Último chance
-- CTA: Registro webinar
-
-### Email 5: Día del webinar (Día 13)
-**Subject**: "Hoy es el día - Link para unirte al webinar"
-**Contenido**:
-- Solo para REGISTRADOS
-- Link de Zoom
-- Agenda del webinar
-- Bonus por asistir
+**Detalle completo de cada email:** Ver `docs/email_templates_v2.md`
 
 ---
 
-## Fase 3: Secuencia Post-Webinar (3 emails)
+## Encuesta de Feedback
 
-### Email 6: Gracias + Replay (Día 14)
-**Subject**: "Gracias por asistir - Aquí tu replay + recursos"
-**Contenido**:
-- Link al replay (para todos los registrados)
-- Slides PDF
-- CTA: "Explora las lecciones en TPT"
-- Link: https://www.teacherspayteachers.com/store/modelit
+### Preguntas clave
 
-### Email 7: Oferta especial (Día 17)
-**Subject**: "Oferta exclusiva para asistentes del webinar"
-**Contenido**:
-- Solo para los que ASISTIERON
-- Descuento especial en TPT (si aplica)
-- Bundle destacado
-- CTA: Comprar en TPT
+1. ¿Usaste la lección con tus estudiantes?
+2. Rating general (1-5 estrellas)
+3. ¿Qué te gustó más? (checkboxes)
+4. ¿Qué podría mejorar? (texto libre)
+5. ¿Qué grado enseñas?
+6. ¿Qué temas te gustaría ver?
+7. ¿Te interesa un webinar gratuito?
 
-### Email 8: Seguimiento final (Día 21)
-**Subject**: "¿Tienes preguntas sobre ModelIt?"
-**Contenido**:
-- Para registrados que NO compraron
-- FAQ
-- Ofrecer demo 1-on-1
-- CTA: Agendar llamada o comprar en TPT
+### Segmentación automática
+
+| Respuesta | Clasificación | Acción |
+|-----------|---------------|--------|
+| 4-5 ⭐ + "Sí, webinar" | **Hot Lead** | Email 4 (webinar) |
+| 3 ⭐ + "Quizás" | **Warm Lead** | Email 4 (soft) |
+| 1-2 ⭐ o "No" | **Cold Lead** | Email 5 (TPT) |
+| Sin respuesta | **Unknown** | Email 5 (TPT) |
+
+**Detalle completo:** Ver `docs/survey_questions.md`
 
 ---
 
-## Fase 4: Lead Scoring Automático
+## Lead Scoring
 
-### Puntuación de interés (0-100)
+### Puntuación de acciones
 
 | Acción | Puntos |
 |--------|--------|
 | Abrió email | +5 |
 | Click en email | +10 |
-| Registró webinar | +25 |
+| Descargó lección gratuita | +20 |
+| Completó encuesta | +15 |
+| Rating 4-5 estrellas | +20 |
+| Rating 1-2 estrellas | -10 |
+| Registro webinar | +25 |
 | Asistió webinar | +30 |
-| Visitó TPT (tracking link) | +15 |
+| Visitó TPT | +15 |
 | Compró en TPT | +100 |
 
-### Segmentación por score
+### Umbrales de acción
 
-| Score | Clasificación | Acción |
-|-------|---------------|--------|
-| 0-10 | Frío | Mantener en nurture |
-| 11-30 | Tibio | Email adicional personalizado |
-| 31-60 | Caliente | Prioridad para follow-up |
-| 61+ | Muy caliente | Contacto personal/llamada |
+| Score | Segmento | Acción |
+|-------|----------|--------|
+| 0-15 | Frío | Solo nurture mensual |
+| 16-40 | Tibio | Emails de valor + TPT |
+| 41-70 | Caliente | Invitación webinar prioritaria |
+| 71+ | Muy caliente | Contacto personal / oferta especial |
 
----
-
-## Fase 5: Automatización n8n
-
-### Workflow 1: Email Sequence Automation
-```
-Trigger: Nuevo contacto en lista "Teachers K12 - Cold"
-↓
-Esperar 0 días → Enviar Email 1
-↓
-Esperar 3 días → Verificar si abrió
-  → No abrió: Enviar Email 2
-  → Sí abrió: Esperar
-↓
-Esperar 3 días → Enviar Email 3
-↓
-Verificar si registrado webinar
-  → No: Enviar Email 4
-  → Sí: Agregar a lista "Webinar Registrados"
-↓
-Día del webinar → Enviar Email 5 (solo registrados)
-```
-
-### Workflow 2: Post-Webinar Sequence
-```
-Trigger: Webinar completado (webhook de Zoom)
-↓
-Obtener lista de asistentes de Zoom
-↓
-Actualizar HubSpot: marcar como "attended"
-↓
-Esperar 1 día → Enviar Email 6 (replay)
-↓
-Esperar 3 días → Verificar si visitó TPT
-  → Sí visitó: Enviar Email 7 (oferta)
-  → No visitó: Enviar reminder con link TPT
-↓
-Esperar 4 días → Enviar Email 8 (seguimiento final)
-```
-
-### Workflow 3: Interest Tracking
-```
-Trigger: Click en link de TPT (UTM tracking)
-↓
-Actualizar HubSpot: +15 puntos
-↓
-Mover a lista "TPT Visitors"
-↓
-Si score > 60: Notificar por Slack/Email para follow-up manual
-```
+**Detalle completo:** Ver `docs/lead_scoring.md`
 
 ---
 
-## Fase 6: Tracking con UTM Parameters
+## Configuración Técnica
 
-### Links con tracking
+### HubSpot: Listas requeridas
+
+| Lista | Criterio |
+|-------|----------|
+| Teachers K12 - Carlsbad | 342 contactos iniciales |
+| Downloaded Free Lesson | click en download link |
+| Survey - Hot Leads | rating ≥ 4 |
+| Survey - Cold Leads | rating < 4 o sin respuesta |
+| Webinar Registered | completó registro |
+| Webinar Attended | asistió al webinar |
+| TPT Visitors | click en link TPT |
+| Purchased | confirmación compra |
+
+### HubSpot: Propiedades personalizadas
+
+| Propiedad | Tipo | Descripción |
+|-----------|------|-------------|
+| `downloaded_lesson` | Boolean | Descargó la lección |
+| `download_date` | Date | Fecha de descarga |
+| `survey_completed` | Boolean | Completó encuesta |
+| `survey_rating` | Number | Rating 1-5 |
+| `survey_webinar_interest` | Dropdown | yes/maybe/no |
+| `webinar_registered` | Boolean | Se registró |
+| `webinar_attended` | Boolean | Asistió |
+| `tpt_clicked` | Boolean | Visitó TPT |
+| `purchased_tpt` | Boolean | Compró |
+| `lead_score` | Number | Puntuación calculada |
+
+### Workflows de automatización
+
+**Workflow 1: Email Sequence**
 ```
-TPT Store:
-https://www.teacherspayteachers.com/store/modelit?utm_source=hubspot&utm_medium=email&utm_campaign=teachers_k12_jan2026
+Nuevo contacto → Email 1 → Esperar 3 días →
+  SI no descargó → Email 2
+  SI descargó → Esperar 7 días → Email 3 (Survey)
+```
 
-Webinar Registration:
-[ZOOM_LINK]?utm_source=hubspot&utm_medium=email&utm_campaign=webinar_jan2026
+**Workflow 2: Survey Segmentation**
+```
+Survey completada →
+  SI rating ≥ 4 → Add to "Hot Leads" → Email 4
+  SI rating < 4 → Add to "Cold Leads" → Email 5
+  SI no response (5 días) → Add to "Cold Leads" → Email 5
+```
 
-Video Demo:
-[VIDEO_LINK]?utm_source=hubspot&utm_medium=email&utm_campaign=intro_video
+**Workflow 3: Post-Webinar**
+```
+Webinar terminado → Email 6 (replay) →
+  Esperar 3 días → SI no click TPT → Email 7 (reminder)
+  Esperar 4 días → Email 8 (final)
 ```
 
 ---
 
-## Fase 7: Calendario de Webinars
+## Webinar
 
-### Propuesta: Webinar mensual
-- **Primer webinar**: Última semana de Enero 2026
-- **Horario sugerido**: Martes o Miércoles, 4:00 PM PST
-- **Duración**: 45 min + 15 min Q&A
-- **Plataforma**: Zoom (integrado con n8n)
+### Detalles
 
-### Agenda del webinar
-1. (5 min) Intro y problema
-2. (15 min) Demo de ModelIt
-3. (10 min) Caso de éxito / testimonial
-4. (10 min) Cómo empezar + recursos
-5. (5 min) Oferta especial
-6. (15 min) Q&A
+| Aspecto | Valor |
+|---------|-------|
+| Título | "Teaching Systems Thinking with ModelIt" |
+| Duración | 45 min + 15 min Q&A |
+| Plataforma | Zoom |
+| Horario sugerido | Martes/Miércoles, 4 PM PST |
+| Capacidad | 100 personas |
 
----
+### Agenda
 
-## Archivos a Crear
+| Tiempo | Contenido |
+|--------|-----------|
+| 0-5 min | Intro y presentación |
+| 5-20 min | Demo de 3 lecciones ModelIt |
+| 20-30 min | Cómo integrar en curriculum |
+| 30-40 min | Tips de implementación |
+| 40-45 min | Oferta especial + CTA |
+| 45-60 min | Q&A |
 
-| Archivo | Ubicación | Descripción |
-|---------|-----------|-------------|
-| `email_templates.py` | `D:/ClaudeEili/Scripts/` | Templates HTML de los 8 emails |
-| `hubspot_setup.py` | `D:/ClaudeEili/Scripts/` | Crear listas y propiedades |
-| `n8n_email_workflow.json` | `D:/ClaudeEili/Scripts/` | Workflow de email sequence |
-| `n8n_postwebinar_workflow.json` | `D:/ClaudeEili/Scripts/` | Workflow post-webinar |
-| `campaign_tracker.py` | `D:/ClaudeEili/Scripts/` | Script para ver métricas |
+### Beneficios para asistentes
+
+- Código descuento 20% (WEBINAR20)
+- Acceso anticipado a nuevas lecciones
+- PDF de slides del webinar
+- Link al replay
 
 ---
 
 ## Métricas de Éxito
 
-### KPIs objetivo (primer mes)
+### KPIs objetivo
 
 | Métrica | Objetivo | Cálculo |
 |---------|----------|---------|
-| Open rate emails | >25% | Aperturas / Enviados |
-| Click rate | >5% | Clicks / Aperturas |
-| Registro webinar | >10% | Registros / Contactados |
-| Asistencia webinar | >40% | Asistentes / Registrados |
-| Visitas TPT | >20% | Visitantes / Asistentes |
-| Conversión compra | >5% | Compradores / Visitantes |
+| Tasa descarga lección | >30% | Descargas / Emails enviados |
+| Tasa respuesta encuesta | >40% | Respuestas / Descargas |
+| Rating promedio | >4.0 | Suma ratings / Total respuestas |
+| Registro webinar | >20% | Registros / Hot leads |
+| Asistencia webinar | >50% | Asistentes / Registrados |
+| Visitas TPT | >25% | Visitantes / Total contactados |
+| Conversión compra | >5% | Compradores / Visitantes TPT |
 
 ### Proyección
-- 365 contactos iniciales
-- ~90 registros webinar (25%)
-- ~36 asistentes (40%)
-- ~7 visitas TPT (20%)
-- ~1-2 compras primer mes
 
-**Nota**: Las tasas mejoran con optimización en meses siguientes.
-
----
-
-## Verificación del Plan
-
-### Para probar que funciona:
-1. Ejecutar script de setup de HubSpot → Verificar listas creadas
-2. Enviar email de prueba a ti mismo → Verificar formato y links
-3. Registrar 5 contactos de prueba → Verificar workflow n8n
-4. Click en link TPT → Verificar tracking UTM funciona
-5. Revisar dashboard de métricas → Confirmar datos se registran
+```
+342 contactos iniciales
+├── ~100 descargan lección (30%)
+├── ~40 completan encuesta (40%)
+├── ~16 hot leads (40% de encuestas)
+├── ~8 asisten webinar (50%)
+├── ~85 visitan TPT (25% de total)
+└── ~4-5 compras primer mes (5%)
+```
 
 ---
 
-## Resumen de Implementación
+## Calendario de Implementación
 
-**Día 1**: Setup HubSpot (listas, propiedades)
-**Día 2**: Crear video demo + templates de email
-**Día 3**: Configurar workflows en n8n
-**Día 4**: Pruebas internas
-**Día 5**: Programar webinar en Zoom
-**Día 6**: Lanzar campaña (Email 1 a todos)
-**Día 7-21**: Automatización maneja todo
-**Día 22+**: Revisar métricas, optimizar, repetir
+### Fase 1: Preparación (Día 1-2)
+
+- [ ] Subir lección a hosting (Google Drive/Dropbox)
+- [ ] Crear encuesta en Google Forms
+- [ ] Crear templates de email en HubSpot
+- [ ] Configurar propiedades personalizadas
+- [ ] Crear listas de segmentación
+
+### Fase 2: Configuración Técnica (Día 3-4)
+
+- [ ] Configurar workflows en HubSpot
+- [ ] Conectar Google Forms → HubSpot (Zapier)
+- [ ] Configurar UTM tracking
+- [ ] Pruebas internas (email a ti mismo)
+- [ ] Verificar links y descarga
+
+### Fase 3: Lanzamiento (Día 5+)
+
+| Día | Acción |
+|-----|--------|
+| 1 | Enviar Email 1 a 342 contactos |
+| 3 | Enviar Email 2 a no-descargadores |
+| 10 | Enviar Email 3 (encuesta) a descargadores |
+| 12 | Procesar encuestas → Email 4 o 5 |
+| TBD | Ejecutar webinar |
+| +1 | Email 6 (replay + descuento) |
+| +4 | Email 7 (reminder descuento) |
+| +8 | Email 8 (seguimiento final) |
+
+### Fase 4: Análisis (Día 30+)
+
+- [ ] Revisar métricas vs objetivos
+- [ ] Identificar emails con bajo rendimiento
+- [ ] Analizar feedback de encuestas
+- [ ] Planificar optimizaciones para siguiente mes
+
+---
+
+## Verificación Pre-Lanzamiento
+
+### Checklist técnico
+
+- [ ] ZIP de lección subido y link funcionando
+- [ ] Encuesta Google Forms creada y probada
+- [ ] Emails configurados en HubSpot
+- [ ] Workflows activados
+- [ ] Segmentación automática funcionando
+- [ ] Email de prueba enviado a ti mismo
+- [ ] Links UTM verificados
+- [ ] Webinar programado en Zoom
+
+### Checklist de contenido
+
+- [ ] Subject lines A/B configurados
+- [ ] Personalización {{firstname}} funciona
+- [ ] CTA buttons visibles en mobile
+- [ ] Unsubscribe link presente
+- [ ] Firma de email correcta
+- [ ] Links TPT con UTM
+
+---
+
+## Recursos Relacionados
+
+| Documento | Ubicación | Descripción |
+|-----------|-----------|-------------|
+| Email Templates v2 | `docs/email_templates_v2.md` | 8 templates completos |
+| Survey Questions | `docs/survey_questions.md` | Preguntas de encuesta |
+| Lead Scoring | `docs/lead_scoring.md` | Sistema de puntuación |
+| Implementation Checklist | `docs/implementation_checklist.md` | Tareas paso a paso |
+| Carlsbad Contacts | `data/` | Datos de contactos |
+| HubSpot Scripts | `scripts/hubspot/` | Automatización |
+
+---
+
+## Contacto y Soporte
+
+**Repositorio GitHub:** https://github.com/EiliSierra/modelit-teacher-outreach
+
+**TPT Store:** https://www.teacherspayteachers.com/store/modelit
+
+---
+
+*Última actualización: Enero 2026*
