@@ -6,7 +6,9 @@ This document contains the 8 email templates for the improved Teacher Outreach c
 
 **Lesson Offered:** "From Plug to Steam: How Energy Boils Water"
 **Target Audience:** 342 teachers from Carlsbad USD
-**Goal:** Build trust → Collect feedback → Segment leads → Convert to TPT sales
+**Lesson Link:** https://drive.google.com/file/d/1x5cygfmfAQdpsGzCi-ksZ3cX-kdJ7bHc/view
+**Webinar:** https://www.eventbrite.com/o/modelit-k12-education-120756581127
+**Goal:** Build trust → Collect feedback ($5 gift card) → Webinar (Eventbrite) → Convert to TPT sales
 
 ---
 
@@ -35,7 +37,7 @@ This document contains the 8 email templates for the improved Teacher Outreach c
 
 ### Subject Lines (A/B Test)
 - **A:** "Free lesson: Your students will simulate boiling water"
-- **B:** "A gift for your science class — download free"
+- **B:** "A gift for your science class — view it free"
 
 ### Body
 
@@ -58,8 +60,8 @@ In about 45 minutes, your students will:
 The lesson is NGSS-aligned (PS3.A, PS3.B) and works perfectly
 for 8th grade physical science.
 
-[BUTTON: Download Your Free Lesson]
-{{download_link}}
+[BUTTON: View Free Lesson]
+https://drive.google.com/file/d/1x5cygfmfAQdpsGzCi-ksZ3cX-kdJ7bHc/view
 
 What's included:
 • Teacher Guide with step-by-step instructions
@@ -68,6 +70,7 @@ What's included:
 • Video walkthrough for you
 • Direct link to the simulation — no student accounts needed
 
+View it anytime — it's on Google Drive, no download required.
 Try it with your class and let us know what you think!
 
 Best,
@@ -77,9 +80,9 @@ P.S. Over 150 teachers in your area have already downloaded this lesson.
 ```
 
 ### HubSpot Properties
-- **CTA Link:** `{{download_link}}` with UTM: `?utm_source=hubspot&utm_medium=email&utm_campaign=free_lesson_jan2026&utm_content=email1`
+- **CTA Link:** `https://drive.google.com/file/d/1x5cygfmfAQdpsGzCi-ksZ3cX-kdJ7bHc/view` with UTM: `?utm_source=hubspot&utm_medium=email&utm_campaign=free_lesson_jan2026&utm_content=email1`
 - **Send to:** All contacts in "Teachers K12 - Carlsbad" list
-- **Track:** Email opens, clicks, downloads
+- **Track:** Email opens, clicks on Google Drive link
 
 ---
 
@@ -88,7 +91,7 @@ P.S. Over 150 teachers in your area have already downloaded this lesson.
 ### Trigger
 Send only to contacts who:
 - Received Email 1
-- Did NOT click the download link
+- Did NOT click the Google Drive link
 
 ### Subject Line
 "Your free energy lesson is waiting"
@@ -108,8 +111,8 @@ everything you need: teacher guide, student activities,
 PowerPoint, and a simulation your students can run right
 in their browser.
 
-[BUTTON: Get My Free Lesson]
-{{download_link}}
+[BUTTON: View Free Lesson]
+https://drive.google.com/file/d/1x5cygfmfAQdpsGzCi-ksZ3cX-kdJ7bHc/view
 
 No strings attached. Just a great lesson we think you'll love.
 
@@ -117,57 +120,61 @@ No strings attached. Just a great lesson we think you'll love.
 ```
 
 ### HubSpot Properties
-- **CTA Link:** Same as Email 1 with `&utm_content=email2_reminder`
+- **CTA Link:** Same Google Drive link with `&utm_content=email2_reminder`
 - **Workflow condition:** `email_1_clicked = false`
 
 ---
 
-## EMAIL 3: Feedback Survey (Day 10)
+## EMAIL 3: Feedback Survey + $5 Gift Card (Day 8-10)
 
 ### Trigger
 Send to contacts who:
-- Downloaded the lesson (clicked download link)
-- 7+ days since download
+- Viewed the lesson (clicked Google Drive link)
+- 5-7+ days since viewing
 
 ### Subject Line
-"Quick question about the lesson"
+"Quick question about the lesson (+ a $5 thank you)"
 
 ### Body
 
 ```
 Hi {{contact.firstname}},
 
-Last week you downloaded "From Plug to Steam: How Energy Boils Water."
+Last week you checked out "From Plug to Steam: How Energy Boils Water."
 
-We'd love to hear how it went!
+We'd love to hear what you thought!
 
-Did you get a chance to try it with your students?
-Your feedback helps us create better resources.
+As a thank you for your feedback, you'll receive a $5 Starbucks
+gift card after completing this 2-minute survey.
 
-[BUTTON: Take 2-Minute Survey]
+[BUTTON: Take 2-Minute Survey → Get $5]
 {{survey_link}}
 
-As a thank you, everyone who completes the survey will get
-early access to our next free lesson.
+Your honest feedback helps us create better resources for
+teachers like you. Whether you loved it or have suggestions,
+we want to hear it all.
 
 Thanks for being part of the ModelIt community!
 
 — The ModelIt Team
+
+P.S. The $5 Starbucks gift card will be sent to your email
+within 48 hours of completing the survey. ☕
 ```
 
 ### HubSpot Properties
 - **Survey Link:** Google Form with UTM tracking
-- **Workflow condition:** `downloaded_lesson = true` AND `days_since_download >= 7`
+- **Workflow condition:** `viewed_lesson = true` AND `days_since_view >= 5`
+- **Gift Card:** Send Starbucks $5 e-gift card code after survey completion
 
 ---
 
-## EMAIL 4: Webinar Invitation (Hot Leads Only)
+## EMAIL 4: Webinar Invitation (Day 12)
 
 ### Trigger
 Send to contacts who:
 - Completed the survey
-- Gave 4-5 star rating
-- Selected "Yes, I'd love to attend" for webinar interest
+- Selected "Sí, me interesa" for webinar interest
 
 ### Subject Line
 "You're invited: Exclusive webinar for science teachers"
@@ -195,8 +202,8 @@ In this webinar, you'll:
 
 Plus, all attendees get a special discount on our TPT store.
 
-[BUTTON: Save My Spot]
-{{webinar_registration_link}}
+[BUTTON: Save My Spot on Eventbrite]
+https://www.eventbrite.com/o/modelit-k12-education-120756581127
 
 Space is limited to keep the session interactive.
 
@@ -206,9 +213,10 @@ See you there!
 ```
 
 ### HubSpot Properties
-- **Workflow condition:** `survey_rating >= 4` AND `webinar_interest = "yes"`
+- **Workflow condition:** `survey_completed = true` AND `webinar_interest = "yes"`
+- **Webinar Link:** https://www.eventbrite.com/o/modelit-k12-education-120756581127
 - **Dynamic fields:** `{{webinar_date}}`, `{{webinar_time}}`
-- **Track:** Registration clicks
+- **Track:** Eventbrite registration clicks
 
 ---
 
@@ -248,8 +256,8 @@ and ready-to-use simulations.
 Or, if you prefer to see the lessons in action first,
 join our upcoming free webinar:
 
-[LINK: Register for Webinar]
-{{webinar_registration_link}}
+[LINK: Register for Webinar on Eventbrite]
+https://www.eventbrite.com/o/modelit-k12-education-120756581127
 
 Happy teaching!
 
@@ -384,6 +392,44 @@ https://www.teacherspayteachers.com/store/modelit
 
 ---
 
+## BONUS EMAIL: Gift Card Delivery (After Survey Completion)
+
+### Trigger
+Send to contacts who:
+- Completed the feedback survey
+- `gift_card_sent = false`
+
+### Subject Line
+"Your $5 Starbucks Gift Card! ☕"
+
+### Body
+
+```
+Hi {{contact.firstname}},
+
+Thank you for sharing your feedback about our "From Plug to Steam"
+lesson!
+
+As promised, here's your $5 Starbucks Gift Card:
+
+🎁 Code: {{gift_card_code}}
+
+To redeem: Visit starbucks.com/card or the Starbucks app
+and add this code.
+
+We hope you enjoy your coffee!
+
+— The ModelIt Team
+```
+
+### Process Notes
+- **Source:** Pre-purchased Starbucks e-gift cards ($5 each)
+- **Delivery:** Manual or semi-automated (check surveys weekly)
+- **Tracking:** Mark `gift_card_sent = true` after sending
+- **Budget:** ~$250 for 50 cards (expect ~40 redemptions)
+
+---
+
 ## UTM Parameters Reference
 
 | Email | UTM Content Value |
@@ -408,8 +454,9 @@ https://www.teacherspayteachers.com/store/modelit
 
 | Property | Type | Purpose |
 |----------|------|---------|
-| `downloaded_lesson` | Boolean | Clicked download link |
-| `download_date` | Date | When they downloaded |
+| `viewed_lesson` | Boolean | Clicked Google Drive link |
+| `view_date` | Date | When they viewed the lesson |
+| `gift_card_sent` | Boolean | Starbucks $5 code sent |
 | `survey_completed` | Boolean | Filled out feedback form |
 | `survey_rating` | Number (1-5) | Star rating from survey |
 | `webinar_interest` | Dropdown | yes/maybe/no |
@@ -459,10 +506,13 @@ Before launching each email:
 
 ## Files Location
 
-**Lesson files for download link:**
+**Lesson shared via Google Drive:**
+https://drive.google.com/file/d/1x5cygfmfAQdpsGzCi-ksZ3cX-kdJ7bHc/view
+
+**Original source files:**
 `D:\Alexandria´s Design\ModelIt\8th Grade\From Plug to Steam How Energy Boils Water\`
 
-- `From Plug to Steam How Energy Boils Water.zip` — Complete package for distribution
+- `From Plug to Steam How Energy Boils Water.zip` — Complete package
 - `Teacher Guide. From Plug to Steam How Energy Boils Water.pdf`
 - `Activity Pack. From Plug to Steam How Energy Boils Water.pdf`
 - `From Plug to Steam – How Energy Boils Water.pptm`

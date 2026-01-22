@@ -48,7 +48,7 @@ Email → Webinar → TPT
 
 **Plan Mejorado (v2):**
 ```
-Lección Gratuita → Encuesta Feedback → Segmentación → Webinar/TPT
+Lección Gratuita (Google Drive) → Encuesta + $5 Gift Card → Webinar (Eventbrite) → TPT
 ```
 
 ### Por qué funciona mejor
@@ -72,6 +72,8 @@ Lección Gratuita → Encuesta Feedback → Segmentación → Webinar/TPT
 | **Estándares** | NGSS PS3.A, PS3.B |
 | **Plataforma** | ModelIt (Cell Collective) |
 | **Valor en TPT** | $7.99 → **GRATIS como muestra** |
+| **Entrega** | Link de Google Drive (no descarga directa) |
+| **Link** | https://drive.google.com/file/d/1x5cygfmfAQdpsGzCi-ksZ3cX-kdJ7bHc/view |
 | **Duración** | ~45 minutos |
 
 ### Contenido del paquete
@@ -108,34 +110,36 @@ D:\Alexandria´s Design\ModelIt\8th Grade\From Plug to Steam How Energy Boils Wa
 
 ```
                     [Email 1: Lección Gratuita]
+                    "Mira nuestra lección en Google Drive"
                               │
+                              ▼
                     ┌─────────┴─────────┐
                     │                   │
-              No descargó          Descargó ✓
+              No vio lección       Vio lección ✓
                     │                   │
-           [Email 2: Reminder]    (Esperar 7 días)
+           [Email 2: Reminder]    (Esperar 5-7 días)
                     │                   │
                     └─────────┬─────────┘
                               │
-                    [Email 3: Encuesta]
+                              ▼
+                    [Email 3: Encuesta + $5 Gift Card]
+                    "Cuéntanos qué te pareció + recibe $5"
                               │
-            ┌─────────────────┼─────────────────┐
-            │                 │                 │
-        4-5 ⭐              1-3 ⭐           Sin respuesta
-        Hot Lead          Cold Lead         Unknown
-            │                 │                 │
-   [Email 4: Webinar]  [Email 5: TPT]    [Email 5: TPT]
-            │                 │                 │
-         Webinar              │                 │
-            │                 │                 │
-   [Email 6: Replay]          │                 │
-            │                 │                 │
-   [Email 7: Descuento]       │                 │
-            │                 │                 │
-            └─────────────────┴─────────────────┘
+                              ▼
+                    Completó encuesta → Recibe Starbucks $5
                               │
-                    [Email 8: Final Follow-up]
+                              ▼
+                    [Email 4: Invitación Webinar]
+                    "Únete a nuestro webinar en Eventbrite"
+                    Link: eventbrite.com/o/modelit-k12-education-120756581127
                               │
+                              ▼
+                           Webinar
+                              │
+                              ▼
+                    [Emails de seguimiento]
+                              │
+                              ▼
                             TPT 🛒
 ```
 
@@ -147,11 +151,11 @@ D:\Alexandria´s Design\ModelIt\8th Grade\From Plug to Steam How Energy Boils Wa
 
 | # | Nombre | Día | Audiencia | Objetivo |
 |---|--------|-----|-----------|----------|
-| 1 | Free Lesson | 1 | Todos | Ofrecer lección gratuita |
-| 2 | Reminder | 3 | No descargaron | Segundo intento |
-| 3 | Survey | 10 | Descargaron | Recopilar feedback |
-| 4 | Webinar Invite | 12 | Hot leads (4-5⭐) | Invitar a webinar |
-| 5 | More Resources | 12 | Cold/No response | Dirigir a TPT |
+| 1 | Free Lesson | 1 | Todos | Ofrecer lección gratuita (Google Drive) |
+| 2 | Reminder | 3 | No vieron lección | Segundo intento |
+| 3 | Survey + Gift Card | 8-10 | Vieron lección | Feedback + incentivo $5 Starbucks |
+| 4 | Webinar Invite | 12 | Completaron encuesta | Invitar a webinar (Eventbrite) |
+| 5 | More Resources | 12 | No completaron encuesta | Dirigir a TPT |
 | 6 | Replay | 14 | Registrados webinar | Compartir replay + descuento |
 | 7 | Discount Reminder | 17 | Asistieron webinar | Urgencia descuento |
 | 8 | Final Follow-up | 21 | Todos engageados | Cierre + demo |
@@ -160,26 +164,34 @@ D:\Alexandria´s Design\ModelIt\8th Grade\From Plug to Steam How Energy Boils Wa
 
 ---
 
-## Encuesta de Feedback
+## Encuesta de Feedback + $5 Gift Card
+
+### Incentivo
+
+- **Recompensa:** Starbucks e-gift card de $5
+- **Condición:** Completar la encuesta de 2 minutos
+- **Entrega:** Código enviado por email después de verificar respuesta
+- **Presupuesto estimado:** ~$200 (40 respuestas esperadas x $5)
 
 ### Preguntas clave
 
-1. ¿Usaste la lección con tus estudiantes?
-2. Rating general (1-5 estrellas)
-3. ¿Qué te gustó más? (checkboxes)
-4. ¿Qué podría mejorar? (texto libre)
-5. ¿Qué grado enseñas?
-6. ¿Qué temas te gustaría ver?
-7. ¿Te interesa un webinar gratuito?
+1. ¿Pudiste ver la lección completa?
+2. ¿Qué tan fácil fue acceder en Google Drive? (1-5)
+3. ¿Qué te pareció la calidad del contenido? (1-5 estrellas)
+4. ¿Usarías esta lección con tus estudiantes?
+5. ¿Qué te gustó más? (selección múltiple)
+6. ¿Qué podríamos mejorar? (texto libre)
+7. ¿Qué grado enseñas?
+8. ¿Te interesaría unirte a un webinar gratuito?
 
-### Segmentación automática
+### Flujo post-encuesta
 
-| Respuesta | Clasificación | Acción |
-|-----------|---------------|--------|
-| 4-5 ⭐ + "Sí, webinar" | **Hot Lead** | Email 4 (webinar) |
-| 3 ⭐ + "Quizás" | **Warm Lead** | Email 4 (soft) |
-| 1-2 ⭐ o "No" | **Cold Lead** | Email 5 (TPT) |
-| Sin respuesta | **Unknown** | Email 5 (TPT) |
+| Acción | Resultado |
+|--------|-----------|
+| Completa encuesta | Recibe email con código Starbucks $5 |
+| Respondió "Sí" al webinar | Email 4 (invitación Eventbrite) |
+| Respondió "Tal vez" o "No" | Email 5 (TPT directo) |
+| No completó encuesta | Email 5 (TPT) |
 
 **Detalle completo:** Ver `docs/survey_questions.md`
 
@@ -193,7 +205,7 @@ D:\Alexandria´s Design\ModelIt\8th Grade\From Plug to Steam How Energy Boils Wa
 |--------|--------|
 | Abrió email | +5 |
 | Click en email | +10 |
-| Descargó lección gratuita | +20 |
+| Vio lección en Google Drive | +20 |
 | Completó encuesta | +15 |
 | Rating 4-5 estrellas | +20 |
 | Rating 1-2 estrellas | -10 |
@@ -222,7 +234,7 @@ D:\Alexandria´s Design\ModelIt\8th Grade\From Plug to Steam How Energy Boils Wa
 | Lista | Criterio |
 |-------|----------|
 | Teachers K12 - Carlsbad | 342 contactos iniciales |
-| Downloaded Free Lesson | click en download link |
+| Viewed Free Lesson | click en Google Drive link |
 | Survey - Hot Leads | rating ≥ 4 |
 | Survey - Cold Leads | rating < 4 o sin respuesta |
 | Webinar Registered | completó registro |
@@ -234,8 +246,9 @@ D:\Alexandria´s Design\ModelIt\8th Grade\From Plug to Steam How Energy Boils Wa
 
 | Propiedad | Tipo | Descripción |
 |-----------|------|-------------|
-| `downloaded_lesson` | Boolean | Descargó la lección |
-| `download_date` | Date | Fecha de descarga |
+| `viewed_lesson` | Boolean | Vio la lección en Google Drive |
+| `view_date` | Date | Fecha de visualización |
+| `gift_card_sent` | Boolean | Se envió Starbucks $5 |
 | `survey_completed` | Boolean | Completó encuesta |
 | `survey_rating` | Number | Rating 1-5 |
 | `survey_webinar_interest` | Dropdown | yes/maybe/no |
@@ -249,17 +262,18 @@ D:\Alexandria´s Design\ModelIt\8th Grade\From Plug to Steam How Energy Boils Wa
 
 **Workflow 1: Email Sequence**
 ```
-Nuevo contacto → Email 1 → Esperar 3 días →
-  SI no descargó → Email 2
-  SI descargó → Esperar 7 días → Email 3 (Survey)
+Nuevo contacto → Email 1 (Google Drive link) → Esperar 3 días →
+  SI no vio lección → Email 2 (Reminder)
+  SI vio lección → Esperar 5-7 días → Email 3 (Survey + $5 Gift Card)
 ```
 
-**Workflow 2: Survey Segmentation**
+**Workflow 2: Survey → Gift Card + Segmentation**
 ```
 Survey completada →
-  SI rating ≥ 4 → Add to "Hot Leads" → Email 4
-  SI rating < 4 → Add to "Cold Leads" → Email 5
-  SI no response (5 días) → Add to "Cold Leads" → Email 5
+  Enviar email con código Starbucks $5 →
+  SI webinar_interest = "yes" → Email 4 (Webinar Eventbrite)
+  SI webinar_interest = "maybe/no" → Email 5 (TPT)
+  SI no response (5 días) → Email 5 (TPT)
 ```
 
 **Workflow 3: Post-Webinar**
@@ -279,7 +293,8 @@ Webinar terminado → Email 6 (replay) →
 |---------|-------|
 | Título | "Teaching Systems Thinking with ModelIt" |
 | Duración | 45 min + 15 min Q&A |
-| Plataforma | Zoom |
+| Plataforma | Eventbrite |
+| Link | https://www.eventbrite.com/o/modelit-k12-education-120756581127 |
 | Horario sugerido | Martes/Miércoles, 4 PM PST |
 | Capacidad | 100 personas |
 
@@ -309,7 +324,7 @@ Webinar terminado → Email 6 (replay) →
 
 | Métrica | Objetivo | Cálculo |
 |---------|----------|---------|
-| Tasa descarga lección | >30% | Descargas / Emails enviados |
+| Tasa visualización lección | >30% | Clicks Google Drive / Emails enviados |
 | Tasa respuesta encuesta | >40% | Respuestas / Descargas |
 | Rating promedio | >4.0 | Suma ratings / Total respuestas |
 | Registro webinar | >20% | Registros / Hot leads |
@@ -321,9 +336,9 @@ Webinar terminado → Email 6 (replay) →
 
 ```
 342 contactos iniciales
-├── ~100 descargan lección (30%)
-├── ~40 completan encuesta (40%)
-├── ~16 hot leads (40% de encuestas)
+├── ~100 ven lección en Google Drive (30%)
+├── ~40 completan encuesta (40%) → reciben $5 Starbucks
+├── ~16 se registran en webinar (40% de encuestas)
 ├── ~8 asisten webinar (50%)
 ├── ~85 visitan TPT (25% de total)
 └── ~4-5 compras primer mes (5%)
@@ -335,8 +350,11 @@ Webinar terminado → Email 6 (replay) →
 
 ### Fase 1: Preparación (Día 1-2)
 
-- [ ] Subir lección a hosting (Google Drive/Dropbox)
-- [ ] Crear encuesta en Google Forms
+- [x] Subir lección a Google Drive (link: https://drive.google.com/file/d/1x5cygfmfAQdpsGzCi-ksZ3cX-kdJ7bHc/view)
+- [x] Crear evento en Eventbrite (link: https://www.eventbrite.com/o/modelit-k12-education-120756581127)
+- [ ] Crear encuesta en Google Forms (ver docs/survey_questions.md)
+- [ ] Comprar 50 Starbucks e-gift cards de $5 (starbucks.com/gift)
+- [ ] Crear spreadsheet de códigos de gift cards
 - [ ] Crear templates de email en HubSpot
 - [ ] Configurar propiedades personalizadas
 - [ ] Crear listas de segmentación
@@ -347,7 +365,8 @@ Webinar terminado → Email 6 (replay) →
 - [ ] Conectar Google Forms → HubSpot (Zapier)
 - [ ] Configurar UTM tracking
 - [ ] Pruebas internas (email a ti mismo)
-- [ ] Verificar links y descarga
+- [ ] Verificar link Google Drive (accesible sin login)
+- [ ] Verificar página Eventbrite funciona
 
 ### Fase 3: Lanzamiento (Día 5+)
 
@@ -375,14 +394,15 @@ Webinar terminado → Email 6 (replay) →
 
 ### Checklist técnico
 
-- [ ] ZIP de lección subido y link funcionando
+- [ ] Link Google Drive accesible sin login
 - [ ] Encuesta Google Forms creada y probada
+- [ ] Starbucks gift cards compradas y códigos en spreadsheet
 - [ ] Emails configurados en HubSpot
 - [ ] Workflows activados
 - [ ] Segmentación automática funcionando
 - [ ] Email de prueba enviado a ti mismo
 - [ ] Links UTM verificados
-- [ ] Webinar programado en Zoom
+- [ ] Webinar publicado en Eventbrite
 
 ### Checklist de contenido
 

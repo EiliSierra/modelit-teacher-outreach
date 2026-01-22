@@ -2,11 +2,12 @@
 
 ## Overview
 
-This survey collects feedback from teachers who downloaded the free lesson. The responses are used to segment leads into hot (webinar invite) vs cold (TPT direct) paths.
+This survey collects honest feedback from teachers who viewed the free lesson on Google Drive. Responses help improve future lessons and identify teachers interested in the webinar.
 
-**Platform:** Google Forms (recommended) or Typeform
-**Length:** 2 minutes (7 questions)
-**Timing:** Sent 7-10 days after lesson download
+**Platform:** Google Forms (recommended)
+**Length:** 2 minutes (8 questions)
+**Timing:** Sent 5-7 days after viewing lesson
+**Incentive:** $5 Starbucks gift card (mentioned in email, NOT in the survey itself)
 
 ---
 
@@ -14,81 +15,105 @@ This survey collects feedback from teachers who downloaded the free lesson. The 
 
 **"How was 'From Plug to Steam'?"**
 
-Subtitle: Your feedback helps us create better resources. Takes less than 2 minutes.
+Subtitle: Your honest feedback helps us create better resources. Takes less than 2 minutes.
 
 ---
 
 ## Questions
 
-### Question 1: Lesson Usage
+### Question 1: Lesson Viewing
 
-**Did you try the lesson with your students?**
+**Did you get to see the full lesson?**
 
 Type: Multiple choice (single select)
 
-| Option | Value for Segmentation |
-|--------|------------------------|
-| Yes, I used the full lesson | `used_full` |
-| Yes, but only parts of it | `used_partial` |
-| Not yet, but I plan to | `plan_to_use` |
-| No, it didn't work for my class | `did_not_use` |
-
-**Logic:**
-- If "No, it didn't work" → Skip to Question 4 (improvement suggestions)
+| Option | Value |
+|--------|-------|
+| Yes, I saw the whole thing | `viewed_full` |
+| I saw parts of it | `viewed_partial` |
+| I haven't viewed it yet | `not_viewed` |
 
 ---
 
-### Question 2: Overall Rating
+### Question 2: Google Drive Access
 
-**How would you rate the lesson overall?**
+**How easy was it to access the lesson on Google Drive?**
+
+Type: Linear scale (1-5)
+
+```
+1 - Very difficult
+2 - Difficult
+3 - Neutral
+4 - Easy
+5 - Very easy
+```
+
+**Purpose:** Understand if Google Drive delivery method works well for teachers
+
+---
+
+### Question 3: Content Quality
+
+**How would you rate the quality of the content?**
 
 Type: Linear scale (1-5 stars)
 
 ```
-1 ⭐ - Not useful
+1 ⭐ - Poor quality
 2 ⭐⭐ - Below expectations
 3 ⭐⭐⭐ - Met expectations
 4 ⭐⭐⭐⭐ - Above expectations
-5 ⭐⭐⭐⭐⭐ - Excellent, would recommend
+5 ⭐⭐⭐⭐⭐ - Excellent quality
 ```
-
-**Segmentation:**
-- 4-5 stars → Hot lead → Email 4 (Webinar invite)
-- 1-3 stars → Cold lead → Email 5 (TPT resources)
 
 ---
 
-### Question 3: What They Liked
+### Question 4: Classroom Use
 
-**What did you like most?** (Select all that apply)
+**Would you use this lesson with your students?**
+
+Type: Multiple choice (single select)
+
+| Option | Value |
+|--------|-------|
+| Definitely yes | `definitely_yes` |
+| Probably yes | `probably_yes` |
+| I'm not sure | `not_sure` |
+| Probably not | `probably_not` |
+
+---
+
+### Question 5: Favorite Aspects
+
+**What did you like most about the lesson?** (Select all that apply)
 
 Type: Checkbox (multiple select)
 
 | Option | Insight |
 |--------|---------|
-| Easy to set up | Values simplicity |
-| Students were engaged | Cares about engagement |
-| Clear instructions | Values organization |
-| The simulation was effective | Understands ModelIt value |
-| Aligned with my curriculum | Standards-focused |
-| The video walkthrough was helpful | Uses support materials |
+| The explanation video | Values video content |
+| The hands-on activities | Likes interactive learning |
+| The slides/presentation | Values visual aids |
+| The interactive simulation | Understands ModelIt value |
+| The teacher guides | Uses support materials |
 | Other: [text field] | Custom feedback |
 
 ---
 
-### Question 4: Improvement Suggestions
+### Question 6: Improvement Suggestions
 
-**What could be improved?** (Optional)
+**What could we improve?** (Optional)
 
 Type: Long text (paragraph)
 
-Placeholder: "Share any suggestions or challenges you faced..."
+Placeholder: "Share any suggestions, challenges, or ideas..."
 
-**Purpose:** Gather product feedback for future iterations
+**Purpose:** Gather honest product feedback for future iterations
 
 ---
 
-### Question 5: Grade Level
+### Question 7: Grade Level
 
 **What grade do you teach?**
 
@@ -105,38 +130,17 @@ Type: Multiple choice (single select)
 
 ---
 
-### Question 6: Topic Interest
+### Question 8: Webinar Interest
 
-**What science topics would you like to see next?** (Select up to 3)
-
-Type: Checkbox (multiple select, max 3)
-
-| Option | Product Development Insight |
-|--------|----------------------------|
-| Ecosystems / Food webs | High demand topic |
-| Chemical reactions | Chemistry curriculum |
-| Earth systems / Climate | Environmental science |
-| Human body systems | Life science |
-| Physics / Forces | Physical science |
-| Electricity & circuits | Physical science |
-| Genetics / DNA | Life science |
-| Other: [text] | Custom ideas |
-
-**Purpose:** Prioritize future lesson development
-
----
-
-### Question 7: Webinar Interest
-
-**Would you be interested in a free webinar showing more ModelIt lessons?**
+**Would you be interested in joining a free webinar where we show more lessons like this?**
 
 Type: Multiple choice (single select)
 
 | Option | Segmentation Action |
 |--------|---------------------|
-| Yes, I'd love to attend | → Email 4 (immediate webinar invite) |
-| Maybe, send me info | → Email 4 (softer invite) |
-| No thanks | → Email 5 (TPT direct) |
+| Yes, I'm interested | → Email 4 (Eventbrite webinar invite) |
+| Maybe | → Email 5 (TPT resources) |
+| No, thanks | → Email 5 (TPT resources) |
 
 ---
 
@@ -148,7 +152,7 @@ These fields should be pre-filled from the survey link using URL parameters:
 |-------|-----------|---------|
 | Contact Email | `email` | `?email={{contact.email}}` |
 | HubSpot Contact ID | `hs_id` | `?hs_id={{contact.hs_object_id}}` |
-| Download Date | `download_date` | `?download_date={{download_date}}` |
+| View Date | `view_date` | `?view_date={{view_date}}` |
 
 **Example Survey Link:**
 ```
@@ -159,43 +163,43 @@ https://forms.gle/XXXXX?email={{contact.email}}&hs_id={{contact.hs_object_id}}
 
 ## Segmentation Rules Based on Responses
 
-### Hot Lead (→ Email 4: Webinar Invite)
-
-Criteria (ANY of the following):
-- Question 2 (Rating) = 4 or 5 stars
-- Question 7 (Webinar interest) = "Yes, I'd love to attend"
-
-**Action:** Add to list "Survey - Hot Leads", send Email 4
-
-### Warm Lead (→ Email 4: Softer Invite)
+### Webinar Invite (→ Email 4: Eventbrite)
 
 Criteria:
-- Question 2 (Rating) = 3 stars
-- Question 7 (Webinar interest) = "Maybe, send me info"
+- Question 8 (Webinar interest) = "Yes, I'm interested"
 
-**Action:** Add to list "Survey - Warm Leads", send Email 4 with softer CTA
+**Action:** Add to list "Webinar Interested", send Email 4 with Eventbrite link
 
-### Cold Lead (→ Email 5: TPT Resources)
+### TPT Resources (→ Email 5)
 
 Criteria (ANY of the following):
-- Question 2 (Rating) = 1 or 2 stars
-- Question 7 (Webinar interest) = "No thanks"
-- Question 1 (Usage) = "No, it didn't work for my class"
+- Question 8 (Webinar interest) = "Maybe" or "No, thanks"
+- Did not complete survey within 5 days
 
-**Action:** Add to list "Survey - Cold Leads", send Email 5
+**Action:** Add to list "TPT Path", send Email 5
 
-### No Response (→ Email 5: TPT Resources)
+### Gift Card (→ Bonus Email)
 
 Criteria:
-- Did not complete survey within 5 days of receiving Email 3
+- Survey completed (any responses)
 
-**Action:** Add to list "Survey - No Response", send Email 5
+**Action:** Send Starbucks $5 e-gift card code via email within 48 hours
+
+---
+
+## Important Notes
+
+1. **NO mention of the $5 gift card in the survey itself** - The incentive is communicated in the email (Email 3) that links to the survey, not within the survey form.
+
+2. **Focus on honest feedback** - The survey is designed to get genuine opinions, not to sell. Keep it neutral and professional.
+
+3. **Short and respectful** - Teachers are busy. 8 questions, 2 minutes max.
 
 ---
 
 ## Integration with HubSpot
 
-### Option A: Google Forms + Zapier
+### Google Forms + Zapier
 
 ```
 Google Form Submission
@@ -204,25 +208,15 @@ Find HubSpot Contact by email
     ↓
 Update Contact Properties:
     - survey_completed = true
-    - survey_rating = [Q2 value]
-    - survey_webinar_interest = [Q7 value]
+    - survey_rating = [Q3 value]
+    - survey_webinar_interest = [Q8 value]
+    - survey_access_ease = [Q2 value]
+    - survey_would_use = [Q4 value]
     ↓
-Add to appropriate list based on segmentation rules
+Add to appropriate list based on Q8
+    ↓
+Trigger gift card delivery workflow
 ```
-
-### Option B: Typeform + Native HubSpot Integration
-
-Typeform has native HubSpot integration that can:
-- Create/update contacts automatically
-- Map form fields to HubSpot properties
-- Trigger workflows based on responses
-
-### Option C: HubSpot Forms (Built-in)
-
-Create the survey directly in HubSpot Forms:
-- No integration needed
-- Automatic contact property updates
-- Native workflow triggers
 
 ---
 
@@ -234,38 +228,62 @@ After survey completion, update these contact properties:
 |---------------|------|-------------|
 | `survey_completed` | Boolean | Form submitted = true |
 | `survey_date` | Date | Submission timestamp |
-| `survey_rating` | Number | Question 2 |
-| `survey_lesson_used` | Dropdown | Question 1 |
-| `survey_liked_features` | Multi-checkbox | Question 3 |
-| `survey_improvement_notes` | Text | Question 4 |
-| `survey_grade_taught` | Dropdown | Question 5 |
-| `survey_topic_interests` | Multi-checkbox | Question 6 |
-| `survey_webinar_interest` | Dropdown | Question 7 |
+| `survey_viewed_lesson` | Dropdown | Question 1 |
+| `survey_access_ease` | Number (1-5) | Question 2 |
+| `survey_rating` | Number (1-5) | Question 3 |
+| `survey_would_use` | Dropdown | Question 4 |
+| `survey_liked_features` | Multi-checkbox | Question 5 |
+| `survey_improvement_notes` | Text | Question 6 |
+| `survey_grade_taught` | Dropdown | Question 7 |
+| `survey_webinar_interest` | Dropdown | Question 8 |
 
 ---
 
 ## Thank You Page Content
 
-After submission, redirect to a custom thank you page:
-
-### Thank You Message
+After submission, show a simple thank you message:
 
 ```
-Thanks for your feedback!
+Thank you for your feedback! 🎉
 
-As a thank you, here's early access to our next lesson
-(coming soon): "From Sun to Lunch: Energy in Living Systems"
-
-[BUTTON: Join the Early Access List]
+Your $5 Starbucks gift card will arrive in your inbox
+within 48 hours.
 
 In the meantime, explore more lessons in our TPT store:
 [LINK: Visit TPT Store]
 ```
 
-**Purpose:**
-- Maintain engagement
-- Soft sell TPT store
-- Build anticipation for next product
+---
+
+## Gift Card Delivery Process
+
+### Steps:
+
+1. **Weekly check:** Review new survey responses in Google Sheets
+2. **Verify:** Confirm the response is legitimate (not spam)
+3. **Send code:** Use the gift card email template (see email_templates_v2.md)
+4. **Mark sent:** Update `gift_card_sent = true` in HubSpot
+5. **Track:** Log code + email in Gift Card Spreadsheet
+
+### Gift Card Spreadsheet Columns:
+
+| Column | Description |
+|--------|-------------|
+| Code | Starbucks e-gift card code |
+| Amount | $5 |
+| Status | Available / Sent / Redeemed |
+| Sent To | Teacher email |
+| Date Sent | When the code was emailed |
+| Survey Date | When they completed the survey |
+
+### Budget:
+
+| Item | Cost |
+|------|------|
+| 50 Starbucks e-gift cards x $5 | $250 |
+| Sending fees | $0 (manual) |
+| **Total budget** | **$250** |
+| Expected redemptions (~40%) | ~$200 |
 
 ---
 
@@ -274,9 +292,10 @@ In the meantime, explore more lessons in our TPT store:
 | Metric | Target | Calculation |
 |--------|--------|-------------|
 | Response rate | >40% | Responses / Survey emails sent |
-| Average rating | >4.0 | Sum of Q2 / Total responses |
-| Hot lead % | >30% | Hot leads / Total responses |
-| Webinar interest % | >40% | "Yes" + "Maybe" / Total |
+| Average content rating (Q3) | >4.0 | Sum of Q3 / Total responses |
+| Average access ease (Q2) | >4.0 | Sum of Q2 / Total responses |
+| "Would use" rate (Q4) | >60% | "Definitely" + "Probably" / Total |
+| Webinar interest (Q8) | >30% | "Yes" / Total responses |
 | Completion rate | >90% | Completed / Started |
 
 ---
@@ -291,7 +310,7 @@ In the meantime, explore more lessons in our TPT store:
 - [ ] Confirmation message: Custom (see Thank You Page above)
 
 ### Response Destination
-- Create new spreadsheet: "From Plug to Steam - Survey Responses"
+- Create new spreadsheet: "From Plug to Steam - Survey Responses Jan 2026"
 - Connect to Zapier for HubSpot integration
 
 ---
@@ -300,22 +319,16 @@ In the meantime, explore more lessons in our TPT store:
 
 Before launching the survey:
 
-- [ ] All questions display correctly
-- [ ] Logic jumps work (Q1 "No" → Q4)
+- [ ] All 8 questions display correctly
 - [ ] Hidden fields populate from URL parameters
 - [ ] Thank you page displays correctly
 - [ ] Responses save to spreadsheet
 - [ ] Zapier/integration triggers correctly
 - [ ] HubSpot properties update properly
+- [ ] Gift card delivery workflow triggers
 - [ ] Test with your own email first
+- [ ] Verify no mention of $5 in the survey form itself
 
 ---
 
-## Files to Create
-
-| File | Platform | Purpose |
-|------|----------|---------|
-| Google Form | Google Forms | Actual survey |
-| Responses Spreadsheet | Google Sheets | Data collection |
-| Zapier Zap | Zapier | Google Forms → HubSpot |
-| Thank You Page | HubSpot Landing Page | Post-survey redirect |
+*Last updated: January 2026*
