@@ -39,10 +39,10 @@ This document contains the 8 email templates for the improved Teacher Outreach c
 - **A:** "Free lesson: Your students will simulate boiling water"
 - **B:** "A gift for your science class — view it free"
 
-### Body
+### Body (Updated with Alexandria's pedagogical framework)
 
 ```
-Hi {{contact.firstname}},
+Hi {{contact.firstname | default: "there"}},
 
 Have you ever wished your students could SEE how energy flows
 through a system — not just read about it?
@@ -51,14 +51,20 @@ We created a free lesson called "From Plug to Steam: How Energy
 Boils Water" that lets students build and test a digital model
 of energy transfer.
 
-In about 45 minutes, your students will:
+**Simple 45-minute lesson flow:**
+→ Launch (5 min): Introduce the energy system
+→ Build (15 min): Connect components with arrows
+→ Simulate (15 min): Test with energy ON vs OFF
+→ Discuss (10 min): "Because ___, then ___"
+
+Your students will:
 ✓ Identify components of an energy system
 ✓ Connect cause-and-effect relationships
 ✓ Run simulations to test "what if" scenarios
-✓ See real-time graphs of energy flow
+✓ Practice explaining: "Because energy enters, then temperature rises"
 
-The lesson is NGSS-aligned (PS3.A, PS3.B) and works perfectly
-for 8th grade physical science.
+✓ Aligned with California NGSS standards (PS3.A, PS3.B)
+✓ Perfect for 8th grade physical science
 
 [BUTTON: View Free Lesson]
 https://drive.google.com/file/d/1x5cygfmfAQdpsGzCi-ksZ3cX-kdJ7bHc/view
@@ -71,12 +77,12 @@ What's included:
 • Direct link to the simulation — no student accounts needed
 
 View it anytime — it's on Google Drive, no download required.
-Try it with your class and let us know what you think!
 
 Best,
 The ModelIt Team
 
-P.S. Over 150 teachers in your area have already downloaded this lesson.
+P.S. This lesson introduces systems thinking—the foundation of
+all our ModelIt resources. Over 150 teachers have already tried it!
 ```
 
 ### HubSpot Properties
